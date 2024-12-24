@@ -3,14 +3,17 @@ package Models;
 import java.awt.*;
 
 public class KeyBtn {
+    String name;
     int pressTime;
     int keycode;
     int delay;
 
-    public KeyBtn(int pressTime, int keycode, int delay) {
+    public KeyBtn(int pressTime, int keycode, int delay, String name) {
         this.pressTime = pressTime;
         this.keycode = keycode;
         this.delay = delay;
+        this.name = name;
+
     }
 
     public void pressbtn(Robot robot) throws InterruptedException {
@@ -20,6 +23,14 @@ public class KeyBtn {
 
     public void await(Robot robot) throws InterruptedException {
         robot.delay(delay);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getPressTime() {

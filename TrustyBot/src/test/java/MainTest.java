@@ -9,7 +9,7 @@ public class MainTest {
         keycodeRepository keycodeRepository = new keycodeRepository();
         int keycode = keycodeRepository.getKeycode("A");
         double time = Double.POSITIVE_INFINITY;
-        KeyBtn key = new KeyBtn(5000,keycode,5000);
+        KeyBtn key = new KeyBtn(5000,keycode,5000, "Default");
 
             for(int i=0; i < time; i++){
             key.pressbtn(robot);
