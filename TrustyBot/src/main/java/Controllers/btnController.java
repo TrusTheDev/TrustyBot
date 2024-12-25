@@ -14,8 +14,12 @@ public class btnController {
         System.out.println("1: Ingresar teclas 2: editar teclas");
         String option = sc.nextLine();
         if(option == "1"){
-            ();
+           putkey();
         }
+        else if(option == "2"){
+            patchKey();
+        }
+
     }
 
     public boolean putkey(){
@@ -31,7 +35,7 @@ public class btnController {
         return btnRepository.saveKey(key);
     }
 
-    public void patchKey(){
+    public boolean patchKey(){
         System.out.println("Que boton quieres configurar?");
         for(int i=1; i<btnRepository.keyListSize(); i++){
             System.out.println( i + ": " + btnRepository.getKey(i).getName());
@@ -56,6 +60,7 @@ public class btnController {
                 System.out.println("Introduce delay");
                 key.setDelay(sc.nextInt());
         }
+        return btnRepository.saveKey(key);
     }
 
 
