@@ -12,8 +12,18 @@ public class btnRepository {
         return Keybtns.add(key);
     }
 
+    public static void updateKey(int index, KeyBtn key){
+        Keybtns.set(index, key);
+    }
+
     public static void clearRepo(){
         Keybtns.clear();
+    }
+
+    public static void showList(){
+        for(int i=0; i< Keybtns.size(); i++){
+            System.out.println( i + ": " + btnRepository.getKey(i).getName());
+        }
     }
 
     public static KeyBtn getKey(int i){
@@ -23,18 +33,28 @@ public class btnRepository {
     public static KeyBtn getKeyByName(String name){
         for(int i=0; i<Keybtns.size(); i++) {
             KeyBtn key = btnRepository.getKey(i);
-            if (key.getName() == name) {
+            if (key.getName().equals(name)) {
                 return key;
             }
         }
-         KeyBtn ddada = new KeyBtn(2,2,2, "Hola mundoi");
+         KeyBtn ddada = new KeyBtn(2,2,2, "Error");
         return ddada;
+    }
+    //Operador ternario o eliminar los accesos de memoria de alguna forma.
+    public static int getKeyIndexByName(String name){
+        for(int i=0; i<Keybtns.size(); i++){
+            if (btnRepository.getKey(i).getName().equals(name)) {
+                return i;
+            }
+        }
+        return -1;
+
     }
     //Utilizar un java optional
     public static boolean keyNameExists(String name){
         for(int i=0; i<Keybtns.size(); i++){
             KeyBtn key = btnRepository.getKey(i);
-            if(key.getName() == name){
+            if(key.getName().equals(name)){
                 return true;
             }
         }
