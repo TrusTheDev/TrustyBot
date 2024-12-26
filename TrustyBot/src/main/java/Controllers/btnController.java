@@ -8,18 +8,21 @@ import java.util.Scanner;
 
 public class btnController {
     Scanner sc = new Scanner(System.in);
-    public void initProgram() throws AWTException, InterruptedException {}
-
-    public void addKey(){
-        System.out.println("1: Ingresar teclas 2: editar teclas");
-        String option = sc.nextLine();
-        if(option == "1"){
-           putkey();
+    //Arreglar
+    public boolean putPatchKey(){
+        System.out.println("Ingrese identificador de la tecla");
+        for(int i=1; i<btnRepository.keyListSize(); i++){
+            System.out.println( i + ": " + btnRepository.getKey(i).getName());
         }
-        else if(option == "2"){
-            patchKey();
+        String keyId = sc.nextLine();
+        if(btnRepository.keyNameExists(keyId)){
+            KeyBtn key = btnRepository.getKeyByName(keyId);
+            patchKey(key);
         }
-
+        else if(!btnRepository.keyNameExists(keyId)){
+            putkey();
+        }
+        return false;
     }
 
     public boolean putkey(){
@@ -35,13 +38,7 @@ public class btnController {
         return btnRepository.saveKey(key);
     }
 
-    public boolean patchKey(){
-        System.out.println("Que boton quieres configurar?");
-        for(int i=1; i<btnRepository.keyListSize(); i++){
-            System.out.println( i + ": " + btnRepository.getKey(i).getName());
-        }
-        KeyBtn key = btnRepository.getKey(sc.nextInt());
-
+    public void patchKey(KeyBtn key){
         System.out.println("1: Para cambiar el nombre de la tecla 2: Para tiempo de presionado 3: Para la keycode, 4: para el tiempo de delay");
         switch (sc.nextInt()){
             case 1:
@@ -60,7 +57,7 @@ public class btnController {
                 System.out.println("Introduce delay");
                 key.setDelay(sc.nextInt());
         }
-        return btnRepository.saveKey(key);
+        btnRepository.saveKey(key);
     }
 
 

@@ -8,7 +8,7 @@ public class view {
     public static void secuencialMode(){
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Modo secuencial: \n 1: Iniciar programa \n 2: Agregar/editar tecla" );
+        System.out.println("Modo secuencial: \n 1: Iniciar programa \n 2: Agregar tecla/editar tecla" );
         switch (sc.nextLine()){
             case "1":
                 //iniciar programa()
