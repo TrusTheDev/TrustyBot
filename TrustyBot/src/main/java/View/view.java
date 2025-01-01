@@ -1,4 +1,6 @@
 package View;
+import Controllers.secuencialModeController;
+import com.github.kwhat.jnativehook.NativeHookException;
 import repository.btnRepository;
 import java.util.Scanner;
 
@@ -19,10 +21,12 @@ public class view {
         }
     }
 
-    public static void secuencialMode(){
+    public static void secuencialMode() throws NativeHookException, InterruptedException {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Iniciando secuencialMode");
+        secuencialModeController.init();
 
-        System.out.println("Modo secuencial: \n 1: Iniciar programa \n 2: Agregar tecla/editar tecla" );
+
     }
 
 }

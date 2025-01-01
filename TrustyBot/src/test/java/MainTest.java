@@ -22,14 +22,12 @@ public class MainTest {
        long startime = System.currentTimeMillis();
        long tiempoTranscurrido = 0;
         //Hace un procedo en un determinado tiempo
-//       while (tiempoTranscurrido <= 15500){
-//           listener list = new listener();
-//           list.keyPressed();
-//           Thread.sleep(10);
-//           tiempoTranscurrido = System.currentTimeMillis() - startime;
-//       }
-//
-//        System.out.println(tiempoTranscurrido);
+       while (tiempoTranscurrido <= 50000){
+           Thread.sleep(10);
+           tiempoTranscurrido = System.currentTimeMillis() - startime;
+       }
+
+        System.out.println(tiempoTranscurrido);
 
 
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
