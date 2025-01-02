@@ -2,6 +2,8 @@ package View;
 import Controllers.secuencialModeController;
 import com.github.kwhat.jnativehook.NativeHookException;
 import repository.btnRepository;
+
+import java.awt.*;
 import java.util.Scanner;
 
 import static Controllers.viewController.*;
@@ -21,10 +23,10 @@ public class view {
         }
     }
 
-    public static void secuencialMode() throws NativeHookException, InterruptedException {
+    public static void secuencialMode() throws NativeHookException, InterruptedException, AWTException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Iniciando secuencialMode");
-        secuencialModeController.init();
+        secuencialModeController.init(15000);
 
 
     }

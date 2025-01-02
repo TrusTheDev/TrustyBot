@@ -18,6 +18,7 @@ public class KeyBtn {
 
     public void pressbtn(Robot robot) throws InterruptedException {
         robot.keyPress(keycode);
+        robot.wait(pressTime);
         robot.keyRelease(keycode);
     }
 

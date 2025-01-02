@@ -5,27 +5,67 @@ import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import Controllers.NativeHook.*;
+import repository.btnRepository;
 
-public class secuencialModeController {
+import java.awt.*;
 
-    private void run(int timeLimit) throws NativeHookException, InterruptedException {
-        GlobalScreen.registerNativeHook();
-        GlobalScreen.addNativeKeyListener(new NativeHook());
+public class secuencialModeController extends Thread{
+    private int timeLimit = 15000;
+    private boolean finishedFlag = false;
 
-        long startime = System.currentTimeMillis();
-        long timeElapsed = 0;
-        while (timeElapsed <= timeLimit){
-            Thread.sleep(10);
-            timeElapsed = System.currentTimeMillis() - startime;
+    public secuencialModeController(int timeLimit, boolean finishedFlag) {
+        this.timeLimit = timeLimit;
+        this.finishedFlag = finishedFlag;
+    }
+
+    public void run() {
+        try {
+            GlobalScreen.registerNativeHook();
+            GlobalScreen.addNativeKeyListener(new NativeHook());
+
+            long startime = System.currentTimeMillis();
+            long timeElapsed = 0;
+            while (timeElapsed <= timeLimit){
+                Thread.sleep(10);
+                timeElapsed = System.currentTimeMillis() - startime;
+            }
+            finishedFlag = true;
+        } catch (NativeHookException | InterruptedException e) {
+            throw new RuntimeException(e);
         }
-
     }
 
 
-    public static void init(int timeLimit) throws NativeHookException, InterruptedException {
-
-
+    public static void init(int timeLimit) throws NativeHookException, InterruptedException, AWTException {
+        secuencialModeController h1 = new secuencialModeController(timeLimit, true);
+        h1.start();
+        Robot trustyBot = new Robot();
+        while (h1.isFinishedFlag()) {
+            System.out.println("Pulsando teclas");
+            for (int i = 0; i < btnRepository.keyListSize(); i++) {
+                KeyBtn key = btnRepository.getKey(i);
+                key.pressbtn(trustyBot);
+                key.await(trustyBot);
+            }
+        }
+        h1.setFinishedFlag(false);
+        System.out.println("Finalizado");
+        h1.interrupt();
     }
 
+    public boolean isFinishedFlag() {
+        return finishedFlag;
+    }
 
+    public void setFinishedFlag(boolean finishedFlag) {
+        this.finishedFlag = finishedFlag;
+    }
+
+    public int getTimeLimit() {
+        return timeLimit;
+    }
+
+    public void setTimeLimit(int timeLimit) {
+        this.timeLimit = timeLimit;
+    }
 }

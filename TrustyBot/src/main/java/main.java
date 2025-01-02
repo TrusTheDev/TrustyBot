@@ -1,11 +1,12 @@
 import com.github.kwhat.jnativehook.NativeHookException;
 
+import java.awt.*;
 import java.util.Scanner;
 import static Controllers.viewController.*;
 import static View.view.*;
 
 public class main {
-    public static void main(String[] args) throws NativeHookException, InterruptedException {
+    public static void main(String[] args) throws NativeHookException, InterruptedException, AWTException {
         while(true) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Welcome to TrustyBot! \n 0: Cerrar \n 1: iniciar aplicacion \n 2:Ingresar/editar teclas ");
