@@ -16,8 +16,17 @@ public class KeyBtn {
 
     }
 
-    public void pressbtn(Robot robot) throws InterruptedException {
+    public void pressBtn(Robot robot) throws InterruptedException {
+        holdBtn(robot);
+        robot.delay(pressTime);
+        releaseBtn(robot);
+    }
+
+    public void holdBtn(Robot robot) throws InterruptedException {
         robot.keyPress(keycode);
+    }
+
+    public void releaseBtn(Robot robot) throws InterruptedException {
         robot.keyRelease(keycode);
     }
 

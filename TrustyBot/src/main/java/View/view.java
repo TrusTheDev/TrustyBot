@@ -26,7 +26,7 @@ public class view {
     public static void secuencialMode() throws NativeHookException, InterruptedException, AWTException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Iniciando secuencialMode");
-        secuencialModeController.init(5000);
+        secuencialModeController.init(15000);
 
 
     }

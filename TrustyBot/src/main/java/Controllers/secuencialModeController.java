@@ -23,7 +23,8 @@ public class secuencialModeController extends Thread{
 
         try {
             GlobalScreen.registerNativeHook();
-            GlobalScreen.addNativeKeyListener(new NativeHook());
+            NativeHook hook = new NativeHook();
+            GlobalScreen.addNativeKeyListener(hook);
 
             long startime = System.currentTimeMillis();
             long timeElapsed = 0;
@@ -34,6 +35,7 @@ public class secuencialModeController extends Thread{
             }
             finishedFlag = false;
             System.out.println("valor de finished flag en timer: " + isFinishedFlag());
+            GlobalScreen.removeNativeKeyListener(hook);
         } catch (NativeHookException | InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -48,12 +50,11 @@ public class secuencialModeController extends Thread{
             System.out.println("Pulsando teclas");
             for (int i = 0; i < btnRepository.keyListSize(); i++) {
                 KeyBtn key = btnRepository.getKey(i);
-                key.pressbtn(trustyBot);
+                key.pressBtn(trustyBot);
                 sleep(key.getDelay());
                 System.out.println("valor de finished flag en principal: " + h1.isFinishedFlag());
             }
         }
-
         System.out.println("Finalizado");
         h1.interrupt();
     }
