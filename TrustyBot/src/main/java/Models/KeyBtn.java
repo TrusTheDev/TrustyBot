@@ -2,7 +2,9 @@ package Models;
 
 import java.awt.*;
 
-public class KeyBtn {
+import static java.lang.Thread.sleep;
+
+public class KeyBtn implements Runnable {
     String name;
     int pressTime;
     int keycode;
@@ -14,6 +16,18 @@ public class KeyBtn {
         this.delay = delay;
         this.name = name;
 
+    }
+
+    public void run(){
+        try{
+            Robot robot = new Robot();
+            pressBtn(robot);
+
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void pressBtn(Robot robot) throws InterruptedException {

@@ -22,8 +22,8 @@ public class main {
                         secuencialMode();
                         break;
                     }
-                    else if(option == "2"){
-                        //paralelism mode
+                    else if(option.equals("2")){
+                    paralelismMode();
                         break;
                     }
                     break;

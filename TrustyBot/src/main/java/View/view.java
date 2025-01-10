@@ -1,4 +1,5 @@
 package View;
+import Controllers.paralelismModeController;
 import Controllers.secuencialModeController;
 import com.github.kwhat.jnativehook.NativeHookException;
 import repository.btnRepository;
@@ -29,6 +30,12 @@ public class view {
         secuencialModeController.init(15000);
 
 
+    }
+
+    public static void paralelismMode() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Iniciando paralelismMode");
+        paralelismModeController.init(15000);
     }
 
 }
