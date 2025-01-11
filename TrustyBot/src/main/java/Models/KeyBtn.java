@@ -21,7 +21,11 @@ public class KeyBtn implements Runnable {
     public void run(){
         try{
             Robot robot = new Robot();
+            System.out.println("Pressing btn");
+            sleep(delay);
             pressBtn(robot);
+
+
 
         } catch (AWTException e) {
             throw new RuntimeException(e);
@@ -30,9 +34,17 @@ public class KeyBtn implements Runnable {
         }
     }
 
+    public void pressThreadBtn(KeyBtn key) {
+        Runnable task = key;
+
+        Thread thread = new Thread(task);
+
+        thread.start();
+
+    }
+
     public void pressBtn(Robot robot) throws InterruptedException {
         holdBtn(robot);
-        robot.delay(pressTime);
         releaseBtn(robot);
     }
 

@@ -23,6 +23,7 @@ public class main {
                         break;
                     }
                     else if(option.equals("2")){
+                        //Re pensar la solucion y borrar todo, capaz scheduling task o algo
                     paralelismMode();
                         break;
                     }

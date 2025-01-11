@@ -5,9 +5,6 @@ import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
 import repository.btnRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class paralelismModeController extends Thread {
     private int timeLimit = 15000;
     private boolean finishedFlag = true;
@@ -38,22 +35,15 @@ public class paralelismModeController extends Thread {
         }
     }
 
-    public static void init(int timeLimit) {
+    public static void init(int timeLimit) throws InterruptedException {
         paralelismModeController timer = new paralelismModeController(timeLimit, true);
         System.out.println("Iniciando paralelism mode");
         timer.start();
         while(timer.isFinishedFlag()){
             System.out.println("Pulsando teclas paralelamente");
-            List<Thread> threads = new ArrayList<>();
             for( int i = 0; i < btnRepository.keyListSize(); i++){
                 KeyBtn key = btnRepository.getKey(i);
-
-                Thread keyThread = new Thread(() -> {
-                    //calling a method, not .start
-                    key.start();
-
-                });
-                threads.add(keyThread);
+                key.pressThreadBtn(key);
                 System.out.println("valor de finished flag en principal: " + timer.isFinishedFlag());
             }
         }
