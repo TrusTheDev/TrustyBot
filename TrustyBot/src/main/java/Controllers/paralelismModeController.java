@@ -45,7 +45,9 @@ public class paralelismModeController extends Thread {
                 KeyBtn key = btnRepository.getKey(i);
                 key.pressThreadBtn(key);
                 System.out.println("valor de finished flag en principal: " + timer.isFinishedFlag());
+                System.out.println(Thread.currentThread().getId());
             }
+            sleep(1000);
         }
         System.out.println("Finalizado");
         timer.interrupt();

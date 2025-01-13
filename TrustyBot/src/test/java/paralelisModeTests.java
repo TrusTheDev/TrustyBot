@@ -1,5 +1,5 @@
 import java.awt.*;
-import javax.swing.JPanel
+import javax.swing.JPanel;
 import static java.lang.Thread.sleep;
 
 public class paralelisModeTests {

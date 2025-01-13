@@ -1,4 +1,6 @@
+import Models.KeyBtn;
 import com.github.kwhat.jnativehook.NativeHookException;
+import repository.btnRepository;
 
 import java.awt.*;
 import java.util.Scanner;
@@ -7,6 +9,12 @@ import static View.view.*;
 
 public class main {
     public static void main(String[] args) throws NativeHookException, InterruptedException, AWTException {
+        KeyBtn A = new KeyBtn(1000, 65, 1000, "A");
+        KeyBtn B = new KeyBtn(1000, 66, 1000, "B");
+        KeyBtn C = new KeyBtn(1000, 67, 1000, "C");
+        btnRepository.saveKey(A);
+        btnRepository.saveKey(B);
+        btnRepository.saveKey(C);
         while(true) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Welcome to TrustyBot! \n 0: Cerrar \n 1: iniciar aplicacion \n 2:Ingresar/editar teclas ");

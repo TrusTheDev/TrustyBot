@@ -22,8 +22,8 @@ public class KeyBtn implements Runnable {
         try{
             Robot robot = new Robot();
             System.out.println("Pressing btn");
-            sleep(delay);
             pressBtn(robot);
+            sleep(delay);
 
 
 

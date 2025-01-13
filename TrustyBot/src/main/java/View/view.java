@@ -35,7 +35,7 @@ public class view {
     public static void paralelismMode() throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Iniciando paralelismMode");
-        paralelismModeController.init(2000);
+        paralelismModeController.init(15000);
     }
 
 }

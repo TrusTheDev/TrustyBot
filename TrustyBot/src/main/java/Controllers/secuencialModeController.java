@@ -8,6 +8,8 @@ import Controllers.NativeHook.*;
 import repository.btnRepository;
 
 import java.awt.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class secuencialModeController extends Thread{
     private int timeLimit = 15000;
@@ -43,20 +45,22 @@ public class secuencialModeController extends Thread{
 
 
     public static void init(int timeLimit) throws NativeHookException, InterruptedException, AWTException {
-        secuencialModeController h1 = new secuencialModeController(timeLimit, true);
-        h1.start();
+        secuencialModeController timer = new secuencialModeController(timeLimit, true);
+        timer.start();
         Robot trustyBot = new Robot();
-        while (h1.isFinishedFlag()) {
-            System.out.println("Pulsando teclas");
-            for (int i = 0; i < btnRepository.keyListSize(); i++) {
+        sleep(2000);
+        while (timer.isFinishedFlag()) {
+            System.out.println("Pulsando teclas paralelamente");
+            for( int i = 0; i < btnRepository.keyListSize(); i++){
                 KeyBtn key = btnRepository.getKey(i);
                 key.pressBtn(trustyBot);
-                sleep(key.getDelay());
-                System.out.println("valor de finished flag en principal: " + h1.isFinishedFlag());
+                System.out.println("valor de finished flag en principal: " + timer.isFinishedFlag());
             }
+            System.out.println("Durmiendo hilo principal");
+            sleep(1000);
         }
         System.out.println("Finalizado");
-        h1.interrupt();
+        timer.interrupt();
     }
 
     public boolean isFinishedFlag() {
