@@ -1,5 +1,5 @@
 package View;
-import Controllers.paralelismModeController;
+import Controllers.ParallelsModeController;
 import Controllers.secuencialModeController;
 import com.github.kwhat.jnativehook.NativeHookException;
 import repository.btnRepository;
@@ -13,7 +13,7 @@ import static repository.btnRepository.showList;
 public class view {
 
     public static void editKey(){
-        System.out.println("Ingrese identificador de la tecla");
+        System.out.println("Enter key name");
         showList();
         String keyId = sc.next();
         if(btnRepository.keyNameExists(keyId)){
@@ -26,16 +26,16 @@ public class view {
 
     public static void secuencialMode() throws NativeHookException, InterruptedException, AWTException {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Iniciando secuencialMode");
+        System.out.println("Initializing secuencial mode");
         secuencialModeController.init(15000);
 
 
     }
 
-    public static void paralelismMode() throws InterruptedException {
+    public static void parallelismMode() throws InterruptedException {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Iniciando paralelismMode");
-        paralelismModeController.init(15000);
+        System.out.println("Initializing parallelism mode");
+        ParallelsModeController.init(15000);
     }
 
 }

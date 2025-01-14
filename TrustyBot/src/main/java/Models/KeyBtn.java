@@ -15,51 +15,38 @@ public class KeyBtn implements Runnable {
         this.keycode = keycode;
         this.delay = delay;
         this.name = name;
-
     }
-
     public void run(){
         try{
             Robot robot = new Robot();
             System.out.println("Pressing btn");
             pressBtn(robot);
             sleep(delay);
-
-
-
         } catch (AWTException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
-
     public void pressThreadBtn(KeyBtn key) {
         Runnable task = key;
-
         Thread thread = new Thread(task);
-
         thread.start();
 
     }
-
     public void pressBtn(Robot robot) throws InterruptedException {
         holdBtn(robot);
         releaseBtn(robot);
     }
-
     public void holdBtn(Robot robot) throws InterruptedException {
         robot.keyPress(keycode);
     }
-
     public void releaseBtn(Robot robot) throws InterruptedException {
         robot.keyRelease(keycode);
     }
-
     public void await(Robot robot) throws InterruptedException {
         robot.delay(delay);
     }
-
     public String getName() {
         return name;
     }

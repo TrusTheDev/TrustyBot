@@ -4,7 +4,7 @@ import repository.btnRepository;
 
 import java.awt.*;
 import java.util.Scanner;
-import static Controllers.viewController.*;
+
 import static View.view.*;
 
 public class main {
@@ -17,22 +17,22 @@ public class main {
         btnRepository.saveKey(C);
         while(true) {
             Scanner sc = new Scanner(System.in);
-            System.out.println("Welcome to TrustyBot! \n 0: Cerrar \n 1: iniciar aplicacion \n 2:Ingresar/editar teclas ");
+            System.out.println("Welcome to TrustyBot! \n 0: close \n 1: initialize \n 2:create/edit keys ");
 
             switch (sc.nextLine()) {
                 case "0":
                     System.exit(0);
 
                 case "1":
-                    System.out.println("1: secuencial mode (safe) \n 2: paralelism mode (unsafe) ");
+                    System.out.println("1: secuencial mode (safe) \n 2: parallelism mode (unsafe) ");
                     String option = sc.nextLine();
                     if(option.equals("1")){
                         secuencialMode();
                         break;
                     }
                     else if(option.equals("2")){
-                        //Re pensar la solucion y borrar todo, capaz scheduling task o algo
-                    paralelismMode();
+
+                    parallelismMode();
                         break;
                     }
                     break;

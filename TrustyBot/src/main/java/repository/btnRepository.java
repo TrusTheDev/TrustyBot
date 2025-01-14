@@ -16,7 +16,7 @@ public class btnRepository {
         Keybtns.set(index, key);
     }
 
-    public static void clearRepo(){
+    public static void clearList(){
         Keybtns.clear();
     }
 
@@ -25,11 +25,11 @@ public class btnRepository {
             System.out.println( i + ": " + btnRepository.getKey(i).getName());
         }
     }
-
     public static KeyBtn getKey(int i){
         return Keybtns.get(i);
     }
-    //Utilizar un java optional
+
+    //Use a java optional here.
     public static KeyBtn getKeyByName(String name){
         for(int i=0; i<Keybtns.size(); i++) {
             KeyBtn key = btnRepository.getKey(i);
@@ -40,7 +40,6 @@ public class btnRepository {
          KeyBtn ddada = new KeyBtn(2,2,2, "Error");
         return ddada;
     }
-    //Operador ternario o eliminar los accesos de memoria de alguna forma.
     public static int getKeyIndexByName(String name){
         for(int i=0; i<Keybtns.size(); i++){
             if (btnRepository.getKey(i).getName().equals(name)) {
@@ -50,7 +49,6 @@ public class btnRepository {
         return -1;
 
     }
-    //Utilizar un java optional
     public static boolean keyNameExists(String name){
         for(int i=0; i<Keybtns.size(); i++){
             KeyBtn key = btnRepository.getKey(i);
@@ -60,7 +58,6 @@ public class btnRepository {
         }
         return false;
     }
-
     public static int keyListSize(){
         return Keybtns.size();
     }

@@ -2,23 +2,21 @@ package Controllers;
 
 import Models.KeyBtn;
 import repository.btnRepository;
-import java.awt.*;
 
-public class secuencialModeController extends Thread{
-    public static void init(int timeLimit) throws InterruptedException, AWTException {
+public class ParallelsModeController extends Thread {
+
+    public static void init(int timeLimit) throws InterruptedException {
         Timer timer = new Timer(timeLimit, true);
+        System.out.println("Initializing parallelism mode");
         sleep(3000);
         timer.start();
-        Robot trustyBot = new Robot();
-
-        while (timer.isFinishedFlag()) {
+        while(timer.isFinishedFlag()){
             for( int i = 0; i < btnRepository.keyListSize(); i++){
                 KeyBtn key = btnRepository.getKey(i);
-                key.pressBtn(trustyBot);
+                key.pressThreadBtn(key);
             }
             sleep(1000);
         }
-        System.out.println("Finalizado");
-        timer.interrupt();
+        System.out.println("Finished");
     }
 }
