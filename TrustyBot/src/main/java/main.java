@@ -10,7 +10,7 @@ import static View.view.*;
 public class main {
     public static void main(String[] args) throws NativeHookException, InterruptedException, AWTException {
         KeyBtn A = new KeyBtn(1000, 65, 1000, "A");
-        KeyBtn B = new KeyBtn(1000, 66, 1000, "B");
+        KeyBtn B = new KeyBtn(1000, 66, 3000, "B");
         KeyBtn C = new KeyBtn(1000, 67, 1000, "C");
         btnRepository.saveKey(A);
         btnRepository.saveKey(B);
@@ -24,18 +24,24 @@ public class main {
                     System.exit(0);
 
                 case "1":
-                    System.out.println("1: secuencial mode (safe) \n 2: parallelism mode (unsafe) ");
-                    String option = sc.nextLine();
-                    if(option.equals("1")){
-                        secuencialMode();
-                        break;
+                    int milliSeconds = 15000;
+                    System.out.println("0: Leave \n 1: secuencial mode (safe) \n 2: parallelism mode (unsafe) \n 3: Process time: " + milliSeconds);
+                    String option = "";
+                    while (option != "0"){
+                        option = sc.nextLine();
+                        switch (option){
+                            case "1":
+                                secuencialMode(milliSeconds);
+                                break;
+                            case "2":
+                                parallelismMode(milliSeconds);
+                                break;
+                            case "3":
+                                System.out.println("Enter process time on milliSeconds: " + milliSeconds);
+                                milliSeconds = sc.nextInt();
+                                break;
+                        }
                     }
-                    else if(option.equals("2")){
-
-                    parallelismMode();
-                        break;
-                    }
-                    break;
                 case "2":
                     editKey();
                     break;

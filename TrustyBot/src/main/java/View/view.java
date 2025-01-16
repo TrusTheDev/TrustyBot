@@ -24,18 +24,18 @@ public class view {
         }
     }
 
-    public static void secuencialMode() throws NativeHookException, InterruptedException, AWTException {
+    public static void secuencialMode(int milliseconds) throws NativeHookException, InterruptedException, AWTException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Initializing secuencial mode");
-        secuencialModeController.init(15000);
+        secuencialModeController.init(milliseconds);
 
 
     }
 
-    public static void parallelismMode() throws InterruptedException {
+    public static void parallelismMode(int milliseconds) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Initializing parallelism mode");
-        ParallelsModeController.init(15000);
+        ParallelsModeController.init(milliseconds);
     }
 
 }
