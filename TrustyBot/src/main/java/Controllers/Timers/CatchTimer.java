@@ -1,19 +1,13 @@
+package Controllers.Timers;
 
 import Controllers.NativeHooks.NativeHookCatcher;
 import Models.KeyBtn;
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
-import repository.KeycodesRepository;
 import repository.btnRepository;
 
-public class CatchKeys extends Thread{
-    int timeLimit = 15000;
+public class CatchTimer extends Thread {
     boolean finishedFlag = true;
-
-    public CatchKeys(int timeLimit, boolean finishedFlag) {
-        this.timeLimit = timeLimit;
-        this.finishedFlag = finishedFlag;
-    }
 
     public void run() {
         try {
@@ -23,7 +17,7 @@ public class CatchKeys extends Thread{
 
             long starTime = System.currentTimeMillis();
             long timeElapsed = 0;
-            while (timeElapsed <= timeLimit) {
+            while (hook.isStop()) {
                 Thread.sleep(10);
                 timeElapsed = System.currentTimeMillis() - starTime;
                 if (hook.isFlag()){
@@ -31,7 +25,7 @@ public class CatchKeys extends Thread{
                     hook.setFlag(false);
                 }
             }
-            finishedFlag = false;
+            setFinishedFlag(false);
             System.out.println("Finished flag on timer: " + isFinishedFlag());
             GlobalScreen.removeNativeKeyListener(hook);
         } catch (NativeHookException | InterruptedException e) {
@@ -39,13 +33,7 @@ public class CatchKeys extends Thread{
         }
     }
 
-    public int getTimeLimit() {
-        return timeLimit;
-    }
 
-    public void setTimeLimit(int timeLimit) {
-        this.timeLimit = timeLimit;
-    }
 
     public boolean isFinishedFlag() {
         return finishedFlag;
@@ -54,13 +42,4 @@ public class CatchKeys extends Thread{
     public void setFinishedFlag(boolean finishedFlag) {
         this.finishedFlag = finishedFlag;
     }
-
-    public static void main(String[] args) {
-
-        CatchKeys timer = new CatchKeys(99999999, true);
-        KeycodesRepository.initList();
-        timer.start();
-    }
 }
-
-

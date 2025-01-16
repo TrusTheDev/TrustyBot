@@ -1,16 +1,14 @@
+package Controllers.Timers;
 
-import Controllers.NativeHooks.NativeHookCatcher;
-import Models.KeyBtn;
+import Controllers.NativeHooks.NativeHook;
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.NativeHookException;
-import repository.KeycodesRepository;
-import repository.btnRepository;
 
-public class CatchKeys extends Thread{
-    int timeLimit = 15000;
-    boolean finishedFlag = true;
+public class Timer extends Thread{
+    private int timeLimit;
+    private boolean finishedFlag;
 
-    public CatchKeys(int timeLimit, boolean finishedFlag) {
+    public Timer(int timeLimit, boolean finishedFlag) {
         this.timeLimit = timeLimit;
         this.finishedFlag = finishedFlag;
     }
@@ -18,7 +16,7 @@ public class CatchKeys extends Thread{
     public void run() {
         try {
             GlobalScreen.registerNativeHook();
-            NativeHookCatcher hook = new NativeHookCatcher();
+            NativeHook hook = new NativeHook();
             GlobalScreen.addNativeKeyListener(hook);
 
             long starTime = System.currentTimeMillis();
@@ -26,10 +24,7 @@ public class CatchKeys extends Thread{
             while (timeElapsed <= timeLimit) {
                 Thread.sleep(10);
                 timeElapsed = System.currentTimeMillis() - starTime;
-                if (hook.isFlag()){
-                    btnRepository.saveKey(new KeyBtn(1000, hook.getKeyCode(), (int) timeElapsed, hook.getName()));
-                    hook.setFlag(false);
-                }
+                System.out.println("Time elapsed: " + timeElapsed);
             }
             finishedFlag = false;
             System.out.println("Finished flag on timer: " + isFinishedFlag());
@@ -54,13 +49,4 @@ public class CatchKeys extends Thread{
     public void setFinishedFlag(boolean finishedFlag) {
         this.finishedFlag = finishedFlag;
     }
-
-    public static void main(String[] args) {
-
-        CatchKeys timer = new CatchKeys(99999999, true);
-        KeycodesRepository.initList();
-        timer.start();
-    }
 }
-
-

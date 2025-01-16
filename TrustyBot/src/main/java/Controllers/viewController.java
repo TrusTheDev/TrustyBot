@@ -24,10 +24,10 @@ public class viewController {
     }
     
     public static void patchKey(int index){
-        String option = "";
+
         KeyBtn keySave = new KeyBtn(1, 1,1,"");
         while(true){
-            option = question("0: Leave 1: Save changes 2: Change key name 3: change pressed time 4: change keycode, 5: change delay time");
+           String option = question("0: Leave 1: Save changes 2: Change key name 3: change pressed time 4: change keycode, 5: change delay time");
 
             switch (option){
                 case "0":

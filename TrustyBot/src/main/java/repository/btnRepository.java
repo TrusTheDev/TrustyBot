@@ -22,7 +22,7 @@ public class btnRepository {
 
     public static void showList(){
         for(int i=0; i< Keybtns.size(); i++){
-            System.out.println( i + ": " + btnRepository.getKey(i).getName());
+            System.out.println( i + ": " + btnRepository.getKey(i).getName()+ "  keycode: " + btnRepository.getKey(i).getKeycode()+ " delay(miliSec): " + btnRepository.getKey(i).getDelay());
         }
     }
     public static KeyBtn getKey(int i){

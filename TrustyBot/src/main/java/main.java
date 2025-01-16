@@ -3,32 +3,30 @@ import com.github.kwhat.jnativehook.NativeHookException;
 import repository.btnRepository;
 
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import static View.view.*;
 
 public class main {
-    public static void main(String[] args) throws NativeHookException, InterruptedException, AWTException {
-        KeyBtn A = new KeyBtn(1000, 65, 1000, "A");
-        KeyBtn B = new KeyBtn(1000, 66, 3000, "B");
-        KeyBtn C = new KeyBtn(1000, 67, 1000, "C");
-        btnRepository.saveKey(A);
-        btnRepository.saveKey(B);
-        btnRepository.saveKey(C);
+    public static void main(String[] args) throws NativeHookException, InterruptedException, AWTException, IOException {
         while(true) {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Welcome to TrustyBot! \n 0: close \n 1: initialize \n 2:create/edit keys ");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-            switch (sc.nextLine()) {
+            System.out.println("Welcome to TrustyBot! \n 0: close \n 1: initialize \n 2:create/edit keys ");
+            String option = reader.readLine();
+
+            switch (reader.readLine()) {
                 case "0":
                     System.exit(0);
 
                 case "1":
                     int milliSeconds = 15000;
                     System.out.println("0: Leave \n 1: secuencial mode (safe) \n 2: parallelism mode (unsafe) \n 3: Process time: " + milliSeconds);
-                    String option = "";
-                    while (option != "0"){
-                        option = sc.nextLine();
+                    option = reader.readLine();
+                    while (option.equals("0")){
                         switch (option){
                             case "1":
                                 secuencialMode(milliSeconds);
@@ -38,12 +36,24 @@ public class main {
                                 break;
                             case "3":
                                 System.out.println("Enter process time on milliSeconds: " + milliSeconds);
-                                milliSeconds = sc.nextInt();
+                                milliSeconds = Integer.parseInt(reader.readLine());
                                 break;
                         }
                     }
                 case "2":
-                    editKey();
+                    System.out.println("0: Leave 1: edit key 2: Autoconfiguration");
+                    switch (reader.readLine()){
+                        case "0":
+                            break;
+                        case "1":
+                            editKey();
+                            break;
+                        case "2":
+                            AutoConfiguration();
+                            System.out.println("Después de autoconfiguration");
+                            break;
+                    }
+                    System.out.println("Después de la opcion 2 del switch");
                     break;
             }
         }
