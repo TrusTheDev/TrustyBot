@@ -37,7 +37,7 @@ public class KeyBtn implements Runnable {
     }
     public void pressBtn(Robot robot) throws InterruptedException {
         holdBtn(robot);
-        sleep(KeyBtn.this.getDelay());
+        sleep(delay);
         releaseBtn(robot);
     }
     public void holdBtn(Robot robot) throws InterruptedException {

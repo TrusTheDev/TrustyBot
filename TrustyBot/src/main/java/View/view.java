@@ -10,7 +10,6 @@ import java.awt.*;
 import java.util.Scanner;
 
 import static Controllers.viewController.*;
-import static java.lang.Thread.sleep;
 import static repository.btnRepository.showList;
 
 public class view {
@@ -29,6 +28,7 @@ public class view {
     }
 
     public static void AutoConfiguration(){
+        System.out.println("Type keys that you want to use in other screen");
         CatchTimer timer = new CatchTimer();
         KeycodesRepository.initList();
         timer.start();
@@ -40,11 +40,8 @@ public class view {
     }
 
     public static void secuencialMode(int milliseconds) throws NativeHookException, InterruptedException, AWTException {
-        Scanner sc = new Scanner(System.in);
         System.out.println("Initializing secuencial mode");
         secuencialModeController.init(milliseconds);
-
-
     }
 
     public static void parallelismMode(int milliseconds) throws InterruptedException {

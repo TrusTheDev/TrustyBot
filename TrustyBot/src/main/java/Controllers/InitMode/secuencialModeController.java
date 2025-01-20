@@ -16,6 +16,7 @@ public class secuencialModeController extends Thread{
             for( int i = 0; i < btnRepository.keyListSize(); i++){
                 KeyBtn key = btnRepository.getKey(i);
                 key.pressBtn(trustyBot);
+
             }
             sleep(1000);
         }
