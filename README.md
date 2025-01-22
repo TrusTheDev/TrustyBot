@@ -2,18 +2,18 @@
 
 1.[Description](#description)
 2.[Features](#features)
-- [Parallism mode](#normal-mode)
-- [Concurrency mode](#concurrency-mode)
-- [Keycode list](#keycodelist)
 
-3.[Installation Guide / Dependencies](#instalation-guide-dependencies)
+- [Parallelism mode](#parallelism-mode)
+- [Concurrency mode](#concurrency-mode)
+- [Keycode list](#keycode-list)
+
+3.[Installation Guide / Dependencies](#instalation-guide--dependencies)
 5.[How to Use](#how-to-use)
    - [Add key](#add-key)
    - [Auto config](#auto-config)
 
-6.[FAQ](#faq)
-7.[About](#about)
-9.[License](#license)
+6.[About](#about)
+7.[License](#license)
 
 ## Description
 -------------
@@ -22,19 +22,19 @@ A configurable bot developed in Java that catch and simulate key presses on sepa
 
 ## Features
 -------------
-KeyBtn
+### KeyBtn
 - Keycode (Integer representation of the key, list below)
 - Keyname (identificator, wathever you want it to be)
 - Keypress (Time in milliseconds that the key is pressed)
 - Keydelay (Delay between each key is pressed (only on concurrency mode))
 
-###Parallism mode
+### Parallelism mode
 This mode simulates key presses in the order they are provided, using their corresponding press time and key code. Ensure that the keys are correctly specified, as improper input could trigger unintended key presses. Trustybot includes an interruption feature, allowing the program to be stopped at any time by pressing the Escape key.
 
-###Concurrency mode
-This mode pushes all keys concurrently, with each key press occurring according to its specified delay, utilizing separate threads. Depending on the number of keys being simulated, this may cause performance issues or system instability. Use this feature at your own risk.
+### Concurrency mode
+This mode pushes all keys concurrently, with each key press occurring according to its specified delay, utilizing separate threads. Depending on the number of keys being simulated and its delay, this may cause performance issues or system instability. Use this feature at your own risk.
 
-#Keycode list 
+# Keycode list 
 | Keycode | Represents |
 | ------------- | ------------- |
 | 3 | Cancel |
@@ -227,6 +227,28 @@ This mode pushes all keys concurrently, with each key press occurring according 
 
 ## Instalation guide / dependencies 
 -------------
-* [JDK](https://www.oracle.com/ar/java/technologies/downloads/) (latest)
+To use this, you only need the JDK and run it on any JRE or IDE of your choice.
+* [JDK](https://www.oracle.com/ar/java/technologies/downloads/) (23.0.2)
+* [JNativeHook](https://github.com/kwhat/jnativehook) (Already included)
 
 
+# How to use
+
+### Add key
+
+The program includes an add/edit key function, allowing you to specify the key you wish to modify. If the key does not already exist, it will be created with the specified name.
+
+![](nqThqjN.png)
+
+### Auto config
+This is likely the most user-friendly option. Simply initiate the process and press the buttons you wish to use, the program will automatically record your inputs. The delay will correspond to a timer that begins upon entering this mode. You may terminate the process at any time by pressing the Escape key.
+
+![](https://i.imgur.com/FjeGDOA.png)
+
+## About
+-------------
+Program developed by Mr.Ivansito
+
+## License
+-------------
+MIT
