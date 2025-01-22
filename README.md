@@ -21,7 +21,7 @@
 ## Description
 -------------
 A configurable bot developed in Java that catch and simulate key presses on separate threads. **
-(Note: It does not send global key events, so it may not function in games. Additionally, please be aware that botting is illegal. This project was created for experimentation and single-player purposes only.)**
+(Note: It does not send global key events, so it may not function in games or other cases. Additionally, please be aware that botting is illegal. This project was created for experimentation and single-player purposes only.)**
 
 ## Features
 -------------
