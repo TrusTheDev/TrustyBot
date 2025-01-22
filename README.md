@@ -1,6 +1,7 @@
 # Trusty bot 1.2.4
 
 1.[Description](#description)
+
 2.[Features](#features)
 
 - [Parallelism mode](#parallelism-mode)
@@ -8,11 +9,13 @@
 - [Keycode list](#keycode-list)
 
 3.[Installation Guide / Dependencies](#instalation-guide--dependencies)
+
 5.[How to Use](#how-to-use)
    - [Add key](#add-key)
    - [Auto config](#auto-config)
 
 6.[About](#about)
+
 7.[License](#license)
 
 ## Description
