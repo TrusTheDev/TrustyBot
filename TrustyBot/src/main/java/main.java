@@ -14,12 +14,6 @@ public class main {
     public static void main(String[] args) throws NativeHookException, InterruptedException, AWTException, IOException {
         while(true) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            KeyBtn a = new KeyBtn(1000, 65, 1000, "a");
-            KeyBtn b = new KeyBtn(1000, 66, 1000, "b");
-            KeyBtn c = new KeyBtn(1000, 67, 1000, "c");
-            btnRepository.saveKey(a);
-            btnRepository.saveKey(b);
-            btnRepository.saveKey(c);
             System.out.println("Welcome to TrustyBot! \n 0: close \n 1: initialize \n 2:create/edit keys ");
              String option = reader.readLine();
 
