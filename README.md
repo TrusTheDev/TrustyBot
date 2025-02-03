@@ -14,9 +14,7 @@
    - [Add key](#add-key)
    - [Auto config](#auto-config)
 
-6.[About](#about)
-
-7.[License](#license)
+6.[License](#license)
 
 ## Description
 -------------
@@ -248,9 +246,6 @@ This is likely the most user-friendly option. Simply initiate the process and pr
 
 ![](https://i.imgur.com/FjeGDOA.png)
 
-## About
--------------
-Program developed by Mr.Ivansito
 
 ## License
 -------------
