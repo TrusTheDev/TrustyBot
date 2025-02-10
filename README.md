@@ -14,7 +14,6 @@
    - [Add key](#add-key)
    - [Auto config](#auto-config)
 
-6.[License](#license)
 
 ## Description
 -------------
@@ -245,8 +244,3 @@ The program includes an add/edit key function, allowing you to specify the key y
 This is likely the most user-friendly option. Simply initiate the process and press the buttons you wish to use, the program will automatically record your inputs. The delay will correspond to a timer that begins upon entering this mode. You may terminate the process at any time by pressing the Escape key.
 
 ![](https://i.imgur.com/FjeGDOA.png)
-
-
-## License
--------------
-MIT
