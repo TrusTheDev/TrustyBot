@@ -16,12 +16,12 @@
 
 
 ## Description
--------------
+
 A configurable bot developed in Java that catch and simulate key presses on separate threads. **
 (Note: It does not send global key events, so it may not function in games or other cases. Additionally, please be aware that botting is illegal. This project was created for experimentation and single-player purposes only.)**
 
 ## Features
--------------
+
 ### KeyBtn
 - Keycode (Integer representation of the key, list below)
 - Keyname (identificator, wathever you want it to be)
@@ -226,7 +226,7 @@ This mode pushes all keys concurrently, with each key press occurring according 
 | 65489 | Cut |
 
 ## Instalation guide / dependencies 
--------------
+
 To use this, you only need the JDK and run it on any JRE or IDE of your choice.
 * [JDK](https://www.oracle.com/ar/java/technologies/downloads/) (23.0.2)
 * [JNativeHook](https://github.com/kwhat/jnativehook) (Already included)
